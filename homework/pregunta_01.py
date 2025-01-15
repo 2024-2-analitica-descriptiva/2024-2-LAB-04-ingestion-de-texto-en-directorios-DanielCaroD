@@ -73,14 +73,17 @@ def pregunta_01():
     """
 
     import zipfile
-    import glob
     import pandas as pd
     import os
 
     with zipfile.ZipFile("files/input.zip", "r") as zip:
         zip.extractall("files")
     
-    files = glob.glob(f"{"files/input"}/**/*.txt", recursive=True)
+    files = []
+    for root, dirs, files_in_dir in os.walk("files/input"):
+        for file_name in files_in_dir:
+            if file_name.endswith(".txt"):
+                files.append(os.path.join(root, file_name))
 
     test = {"phrase":[], "target":[]}
     train = {"phrase":[], "target":[]}
