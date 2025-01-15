@@ -101,12 +101,17 @@ def pregunta_01():
     test_df = pd.DataFrame(test)
     train_df = pd.DataFrame(train)
 
+    print(test_df)
+
     dir = "files/output"
     if not os.path.exists(dir):
         os.makedirs(dir)
     
-    test_df.to_csv(os.path.join(dir, "test_dataset.csv"), index=False)
-    train_df.to_csv(os.path.join(dir, "train_dataset.csv"), index=False)
+    test_file = os.path.join(dir, "test_dataset.csv").replace("\\", "/")
+    train_file = os.path.join(dir, "train_dataset.csv").replace("\\", "/")
+
+    test_df.to_csv(test_file, index=False)
+    train_df.to_csv(train_file, index=False)
  
 if __name__ == "__main__":
     pregunta_01()
