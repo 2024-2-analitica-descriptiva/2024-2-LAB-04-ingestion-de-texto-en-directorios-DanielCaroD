@@ -91,7 +91,7 @@ def pregunta_01():
     for file_path  in files:
         with open(file_path , "r") as file:
             phrase = file.read()
-        target = file_path.split(os.sep)[2]
+        target = file_path.split(os.sep)[-2]
 
         if "test" in file_path:
             test["phrase"].append(phrase)
